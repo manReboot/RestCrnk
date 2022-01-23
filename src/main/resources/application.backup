@@ -1,0 +1,9 @@
+management:
+  server:
+    port: 8081
+
+crnk:
+  path-prefix: /api
+  default-page-limit: 20
+  security:
+    enabled: ${example.security-enabled}
