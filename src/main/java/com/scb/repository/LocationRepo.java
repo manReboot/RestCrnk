@@ -1,9 +1,11 @@
 package com.scb.repository;
 
 import com.scb.model.Location;
+import io.crnk.core.exception.ResourceNotFoundException;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.InMemoryResourceRepository;
 import io.crnk.core.resource.list.ResourceList;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -45,8 +47,14 @@ public class LocationRepo extends InMemoryResourceRepository<Location,Long>{
     }
 
     public void delete(Long id) {
-       locationMap.remove(id);
-       log.info(String.format("%d the id been deleted",id));
+
+       if(locationMap.containsKey(id)) {
+           locationMap.remove(id);
+           log.info(String.format("%d the id been deleted", id));
+       }
+
+       else
+           throw new ResourceNotFoundException("id not found");
     }
 
 

@@ -5,7 +5,7 @@ import io.crnk.core.resource.annotations.JsonApiId;
 import io.crnk.core.resource.annotations.JsonApiResource;
 import lombok.Data;
 
-@JsonApiResource(type="location")
+@JsonApiResource(type="location" ,postable = true)
 @Data
 public class Location {
 
